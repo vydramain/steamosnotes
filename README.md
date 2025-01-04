@@ -13,7 +13,7 @@ sudo steamos-readonly disable
 sudo pacman-key --init
 ```
 
-****Note from me: in another [discussion](https://steamcommunity.com/app/1675200/discussions/0/3448087385654245811/)) found the error with generated gpg keyring even after new key generation
+****Note from me: in another [discussion](https://steamcommunity.com/app/1675200/discussions/0/3448087385654245811/) found the error with generated gpg keyring even after new key generation****
 ```bash
 sudo pacman-key --populate holo
 ```
@@ -42,14 +42,28 @@ sudo pacman -Syu gcc-libs
 sudo pacman -Syu fakeroot
 sudo pacman -Syu linux-api-headers
 sudo pacman -Syu libarchive
+```
 
+****Also I found error with Pacman version. One of [discussions](https://www.reddit.com/r/SteamOS/comments/1bplw91/missing_dependancies_pacman_61/)****
+```console
+==> ERROR: 'pacman' failed to install missing dependencies.
+==> Missing dependencies:
+  -> pacman>6.1
+==> Checking buildtime dependencies...
+```
+
+
+```bash
 cd /opt
-sudo git clone https://aur.archlinux.org/yay.git
-sudo chown -R deck ./yay <-- double space** between deck and period
-cd yay
+git clone https://aur.archlinux.org/yay-bin.git
+sudo chown -R deck ./yay-bin <-- double space** between deck and period
+cd yay-bin
+git checkout 96f90180a3cf72673b1769c23e2c74edb0293a9f
 makepkg -si
 ```
 
 ****Remember to undo the unmerge from earlier if you received the 3 errors using the following command: sudo systemd-sysext merge
 
 You can reference the original post here if you wish: https://www.reddit.com/r/SteamDeck/comments/10yyjw8/cloudflare_warp_vpn_for_your_steamdeck_updated/
+
+
